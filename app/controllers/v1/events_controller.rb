@@ -9,8 +9,19 @@ class V1::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     if @event.save
       render json: @event
+    else
+      render json: @event.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    if @event.save
+      render json: @event, status: :ok
     else
       render json: @event.errors.full_messages, status: :unprocessable_entity
     end
@@ -32,6 +43,6 @@ class V1::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :user_id)
+    params.require(:event).permit(:name, :description, :address)
   end
 end 
