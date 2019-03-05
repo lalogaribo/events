@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do |x| 
-  User.create!(email: "eduardo_#{x}@hotmail.com", password: '1234567', password_confirmation: '1234567')
-  puts "10 users were created from seeds"
+# 10.times do |x| 
+#   User.create!(email: "eduardo_#{x}@hotmail.com", password: '1234567', password_confirmation: '1234567')
+#   puts "10 users were created from seeds"
+# end
+
+5.times do |x|
+  Event.create!(user_id: 1, name: "Pink Floyd#{x}", description: 'Best concert on earth', address: 'Ortega y montaniez')
 end
