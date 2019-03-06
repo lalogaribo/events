@@ -1,4 +1,4 @@
-class V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email].downcase)
     if user && user.valid_password?(params[:password])
