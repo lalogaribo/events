@@ -1,6 +1,11 @@
 class Api::V1::EventsController < ApplicationController
   def index
-    render json: Event.all
+    if params.has_key?(:category_id)
+      events = Event.where(category_id: params[:category_id])
+    else
+      events =  Event.all
+    end
+    render json: events
   end
 
   def new; end
@@ -41,6 +46,6 @@ class Api::V1::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :address)
+    params.require(:event).permit(:name, :description, :address, :category_id)
   end
 end 
