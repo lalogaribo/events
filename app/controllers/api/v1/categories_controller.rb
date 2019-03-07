@@ -41,5 +41,6 @@ class Api::V1::CategoriesController < ApplicationController
 
 	def find_category
 		@category = Category.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
 	end
 end

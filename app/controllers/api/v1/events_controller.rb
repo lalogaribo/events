@@ -48,5 +48,6 @@ class Api::V1::EventsController < ApplicationController
 
 		def find_event
 			@event = Event.find(params[:id])
+			rescue ActiveRecord::RecordNotFound
 		end
 end 
