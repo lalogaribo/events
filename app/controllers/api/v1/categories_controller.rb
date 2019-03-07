@@ -1,5 +1,6 @@
 class Api::V1::CategoriesController < ApplicationController
-	before_action :find_category, only: [ :destroy, :show, :update]
+	before_action :find_category, only: [:destroy, :show, :update]
+
 	def index
 		render json: Category.all, status: 200
 	end
@@ -35,12 +36,12 @@ class Api::V1::CategoriesController < ApplicationController
 
 	private
 
-	def category_params
-		params.require(:category).permit(:name)
-	end
+		def category_params
+			params.require(:category).permit(:name)
+		end
 
-	def find_category
-		@category = Category.find(params[:id])
+		def find_category
+			@category = Category.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
-	end
+		end
 end
