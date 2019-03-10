@@ -1,7 +1,7 @@
 class Api::V1::TicketsController < ApplicationController
   include CurrentCart
   before_action :set_cart, :validate_tickets_available, only: [:create]
-  before_action :set_ticket, only: %i[show update destroy validate_tickets_available]
+  before_action :set_ticket, only: %i[show update destroy]
 
   def index
     @tickets = Ticket.all
@@ -21,18 +21,6 @@ class Api::V1::TicketsController < ApplicationController
     else
       render json: @ticket.errors.full_messages, status: :unprocessable_entity
     end
-  end
-
-  def update
-    if @ticket.update(ticket_params)
-      render json: @ticket
-    else
-      render json: @ticket.errors.full_messages, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @ticket.destroy
   end
 
   private

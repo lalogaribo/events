@@ -20,14 +20,6 @@ class Api::V1::CartsController < ApplicationController
     end
   end
 
-  def update
-    if @cart.update(cart_params)
-      render json: @cart
-    else
-      render json: @cart.errors, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     @cart.destroy
   end
