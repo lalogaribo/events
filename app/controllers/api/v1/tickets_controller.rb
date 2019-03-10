@@ -49,7 +49,7 @@ class Api::V1::TicketsController < ApplicationController
     @event = Event.find(params[:event_id])
     unless @event.quantity >= 0
       errors.add(:base, 'Tickets has sold out ')
-      render json: 'Tickets out of stock', status: 401
+      render json: 'Tickets out of stock', status: :unprocessable_entity
       throw :abort
     end
   end
