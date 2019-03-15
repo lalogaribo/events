@@ -26,16 +26,16 @@ class Api::V1::CartsController < ApplicationController
 
   private
 
-  def set_cart
-    @cart = Cart.find(params[:id])
-  end
+    def set_cart
+      @cart = Cart.find(params[:id])
+    end
 
-  def cart_params
-    params.fetch(:cart, {})
-  end
+    def cart_params
+      params.fetch(:cart, {})
+    end
 
-  def non_existing_cart
-    logger.error "Invalid cart #{params[:id]}"
-    render json: 'Invalid cart', status: 404
-  end
+    def non_existing_cart
+      logger.error "Invalid cart #{params[:id]}"
+      render json: 'Invalid cart', status: 404
+    end
 end

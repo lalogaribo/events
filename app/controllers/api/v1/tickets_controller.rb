@@ -25,20 +25,20 @@ class Api::V1::TicketsController < ApplicationController
 
   private
 
-  def set_ticket
-    @ticket = Ticket.find(params[:id])
-  end
-
-  def ticket_params
-    params.require(:ticket).permit(:event_id, :cart_id, :quantity)
-  end
-
-  def validate_tickets_available
-    @event = Event.find(params[:event_id])
-    unless @event.quantity >= 0
-      errors.add(:base, 'Tickets has sold out ')
-      render json: 'Tickets out of stock', status: :unprocessable_entity
-      throw :abort
+    def set_ticket
+      @ticket = Ticket.find(params[:id])
     end
-  end
+
+    def ticket_params
+      params.require(:ticket).permit(:event_id, :cart_id, :quantity)
+    end
+
+    def validate_tickets_available
+      @event = Event.find(params[:event_id])
+      unless @event.quantity >= 0
+        errors.add(:base, 'Tickets has sold out ')
+        render json: 'Tickets out of stock', status: :unprocessable_entity
+        throw :abort
+      end
+    end
 end
