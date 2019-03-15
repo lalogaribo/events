@@ -37,13 +37,13 @@ class Api::V1::CategoriesController < ApplicationController
 
   private
 
-  def category_params
-    params.require(:category).permit(:name)
-  end
+    def category_params
+      params.require(:category).permit(:name)
+    end
 
-  def find_category
-    @category = Category.find(params[:id])
-  rescue ActiveRecord::RecordNotFound => e
-    render json: e, status: 404
-  end
+    def find_category
+      @category = Category.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: e, status: 404
+    end
 end

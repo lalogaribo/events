@@ -3,10 +3,10 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     @events = if params.key?(:category_id)
-               Event.where(category_id: params[:category_id])
-             else
-               Event.all
-             end
+                Event.where(category_id: params[:category_id])
+              else
+                Event.all
+              end
     render :index
   end
 
