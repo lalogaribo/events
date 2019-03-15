@@ -49,7 +49,7 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def find_event
-      @event = Event.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       render json: e, status: 404
     end

@@ -42,7 +42,7 @@ class Api::V1::CategoriesController < ApplicationController
     end
 
     def find_category
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       render json: e, status: 404
     end
