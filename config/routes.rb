@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :events
       resources :tickets
       resources :carts
+      resources :users, only: [:create]
     end
   end
 end
