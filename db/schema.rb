@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20190315024413) do
+=======
+ActiveRecord::Schema.define(version: 20190319030529) do
+>>>>>>> feature/user-creation-endpoint
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +80,15 @@ ActiveRecord::Schema.define(version: 20190315024413) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
+<<<<<<< HEAD
+=======
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+>>>>>>> feature/user-creation-endpoint
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
